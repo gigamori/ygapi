@@ -19,8 +19,10 @@ Necessary.
 3. strRedirectUrl: Callback URL.  
 String.  
 Necessary.  
-You can specify this argument either in URL form and 'postmessage'. The former is callback url redirected from the server. The latter if you specify 'postmessage' in this place, auth-code is sent through postmessage (only available in Google). Using postmessage you can avoid cross origin exception.
-4. strScope: Scope.
+You can specify this argument either in URL form and 'postmessage'.  
+The former is callback url redirected from the server.  
+The latter if you specify 'postmessage' in this place, auth-code is sent through postmessage (only available in Google). Using postmessage you can avoid cross origin exception.
+4. strScope: Scope.  
 String.  
 Necessary.
 
@@ -55,8 +57,12 @@ https://developers.google.com/identity/protocols/OAuth2
 Ygapi.getAuthCode(elButton, callback, strResponseType, strRedirectUrl, strScope, strClientId)
 ```
 
-To get auth-code, user's authentication action is required. This method attaches the authentication process as a click-event. If an user clicks an element attached, an authentication window appears as a popup.  
-The authentication process returns either of auth-code or access token (You can specify which of them in the parameter).  
+To get auth-code, user's authentication action is required.  
+This method attaches the authentication process as a click-event.  
+If an user clicks an element attached, an authentication window appears as a popup.
+
+The authentication process returns either of auth-code or access token (You can specify which of them in the parameter).
+
 This methods does not return auth-code for the reason of asynchronous processing. Instead you specify a callback function that the auto-code (or access token) is passed as a parameter.
 
 Parameters.
@@ -64,17 +70,21 @@ Parameters.
 1. elButton: Element to add event listener. Probably this should be anchor or button.  
 Node. 
 Necessary.
-2. callback: Callback function that called when auth-code (or access token) is returned. The auth-code (or access token) is passed as a parameter.  
+2. callback: Callback function that called when auth-code (or access token) is returned.  
+The auth-code (or access token) is passed as a parameter.  
 Function.  
 Necessary.
-3. strResponseType: 'code' or 'token'. If you get an access token, you should specify this 'token'. Otherwise auth-code is returned.  
+3. strResponseType: 'code' or 'token'.  
+If you get an access token, you should specify this 'token'. Otherwise auth-code is returned.  
 String.  
 Not necessary (Default: 'code').
 4. strRedirectUrl: Callback URL.  
 String.  
 If you don't specify this, the value of constructor is applied.  
-You can specify this parameter either in URL form and 'postmessage'. The former is callback url redirected from the server. The latter if you specify 'postmessage' in this place, auth-code is sent through postmessage (only available in Google). Using postmessage you can avoid cross origin exception.
-5. strScope: Scope.
+You can specify this parameter either in URL form and 'postmessage'.  
+The former is callback url redirected from the server.  
+The latter if you specify 'postmessage' in this place, auth-code is sent through postmessage (only available in Google). Using postmessage you can avoid cross origin exception.
+5. strScope: Scope.  
 String.  
 If you don't specify this, the value of constructor is applied.
 6. strClientId: Client id.  
@@ -97,8 +107,9 @@ ygapi.getAuthCode(document.getElementsById('auth-button'), function(x){
 Ygapi.getToken(strAuthcode, callback, strRedirectUrl, strClientId, strClientSecret)
 ```
 
-Get an access token and an refresh token by auth-code.
-This methods does not return tokens for the reason of asynchronous processing. Instead you specify a callback function that the access token and the refresh token are passed as parameters.
+Get an access token and an refresh token by auth-code.  
+This methods does not return tokens for the reason of asynchronous processing.  
+Instead you specify a callback function that the access token and the refresh token are passed as parameters.
 
 Parameters.
 
@@ -144,10 +155,12 @@ Parameters.
 1. strAccessToken: Access token to validate.  
 String.  
 Necessary.
-2. callbackValid: Callback function that called when token is valid. The token is passed as a parameter.  
+2. callbackValid: Callback function that called when token is valid.  
+The token is passed as a parameter.  
 Function.  
 Not necessary. If you don't specify, do nothing when valid.
-3. callbackExpired: Callback function that called when token is invalid (expired). The token is *not* passed as a parameter.  
+3. callbackExpired: Callback function that called when token is invalid (expired).  
+The token is *not* passed as a parameter.  
 Function.  
 Not necessary. If you don't specify, do nothing when invalid.
 
@@ -176,7 +189,8 @@ Parameters.
 1. strRefreshToken: Refresh token to get a new access token.  
 String.  
 Necessary.
-2. callback: Callback function that called when the new token is returned. The token is passed as a parameter.  
+2. callback: Callback function that called when the new token is returned.  
+The token is passed as a parameter.  
 Function.  
 Necessary.
 3. strClientId: Client id.  
@@ -250,7 +264,8 @@ Necessary.
 2. strAccessToken: Access token.  
 String.  
 Necessary.
-3. callback: Callback function that called execution succeeds. The response object (parsed as JSON) is passed as a parameter.  
+3. callback: Callback function that called execution succeeds.  
+The response object (parsed as JSON) is passed as a parameter.  
 Function.  
 Necessary.
 Passed parameter is an object of `JSON.parse(xmlHttpRequest.responseText)`
@@ -277,8 +292,10 @@ ygapi.callApi(
 Ygapi.procApi(strApiPath, objParams, callback)
 ```
 
-Generate URL and call API at once. When access token is missing or invalid, this method gets the token before calling API.  
-If 'nextLink' value appears in the server response, this method calls API recursively and get all records automatically. (Callback function is applied for all records.)  
+Generate URL and call API at once.  
+When access token is missing or invalid, this method gets the token before calling API.  
+If 'nextLink' value appears in the server response, this method calls API recursively and get all records automatically. (Callback function is applied for all records.)
+
 This method uses localStorage values below.
 
 - localStorage.getItem('strAccessToken') as strAccessToken.
