@@ -1,6 +1,6 @@
 # Yanai Google API library
 
-## Auth process.
+## Usage
 
 ### Create instance.
 
@@ -211,8 +211,6 @@ ygapi.refreshToken(localStorage.getItem('strRefreshToken'), function(x){
 
 
 
-## Call APIs.
-
 ### Generate API URL.
 
 ```*.js
@@ -336,3 +334,8 @@ ygapi.procApi(
 );
 ```
 
+
+
+## LICENSE
+
+This software is released under the MIT License, see LICENSE.txt.
