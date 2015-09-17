@@ -63,20 +63,20 @@ Ygapi.STR_API_ROOT = 'https://www.googleapis.com';
 Ygapi.prototype._ae = function (el, type, fn){
 	if (el.addEventListener) {
 		el.addEventListener(type, fn, false);
-		el._ecnt = (el._ecnt) ? el.ecnt++ : 1;
+		el._ecnt = (el._ecnt) ? el._ecnt++ : 1;
 	} else if(el.attachEvent) {
 		el.attachEvent('on' + type, fn);
-		el._ecnt = (el._ecnt) ? el.ecnt++ : 1;
+		el._ecnt = (el._ecnt) ? el._ecnt++ : 1;
 	}
 }
 
 Ygapi.prototype._re = function (el, type, fn){
 	if (el.removeEventListener) {
 		el.removeEventListener(type, fn, false);
-		el._ecnt = (el._ecnt) ? el.ecnt-- : 0;
+		el._ecnt = (el._ecnt) ? el._ecnt-- : 0;
 	} else if(el.detachEvent) {
 		el.detachEvent('on' + type, fn);
-		el._ecnt = (el._ecnt) ? el.ecnt-- : 0;
+		el._ecnt = (el._ecnt) ? el._ecnt-- : 0;
 	}
 }
 
